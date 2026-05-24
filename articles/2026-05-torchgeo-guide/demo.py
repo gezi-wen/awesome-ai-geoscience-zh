@@ -9,7 +9,12 @@ TorchGeo 入门 —— 用 PyTorch 处理遥感数据
   pip install torchgeo torch torchvision matplotlib rasterio pillow
 
 数据集自动下载到 /tmp/torchgeo_data（~2GB，仅首次）。
-首次运行需要网络（从 HuggingFace 下载）。
+
+注意：TorchGeo 的 EuroSAT() 原生支持 .tif 多光谱图像，直接用即可。
+如果绕过 TorchGeo 用 torchvision.datasets.ImageFolder 加载 EuroSAT，
+需手动注册 .tif 扩展名（torchvision 默认只认 .jpg/.png）并用 rasterio
+读取。这不是 TorchGeo 的问题，而是 torchvision 的限制。具体见：
+https://github.com/torchgeo/torchgeo/issues/3731
 """
 
 import torch
